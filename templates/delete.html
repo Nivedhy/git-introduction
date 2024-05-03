@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'images/clg st.jpg'%}");
+        }
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .container {
+        width: 80%; 
+        margin: 0 auto;
+        text-align: center;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="file"] {
+            margin-bottom: 15px;
+        }
+        button[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            
+        }
+        button[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+
+    <div>
+            <ul>
+                <li><a href="{% url 'register' %}">REGISTER</a></li>
+                <li><a href="{% url 'login' %}">LOGIN</a></li>
+                <li><a href="{% url 'acc' %}">COURSE</a></li>
+            </ul>
+        </div>
+    </nav>
+
+   
+    <div class="container">
+        <h1>DELETE CONFIRMATION</h1>
+
+        <form action="{% url 'dltfn' t_data.id %}" method="post">
+            <p>Are you sure you want to delete the data of?</p>
+            <p><strong>{{ t_data.first_name }}</strong></p>
+            
+            {% csrf_token %}
+            <button class="btn" type="submit">Yes, Delete</button>
+        </form>
+    </div>
+    <footer>
+        <!-- Footer  -->
+        <p>&copy; Nivedhya</p>
+    </footer>
+</body>
+</html>
